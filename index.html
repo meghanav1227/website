@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Labs – Software that moves your business forward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10142a; --paper:#f6f5fb; --violet:#5b4bff; --mint:#19e3b1; --sun:#ffc857; --muted:#5d6280;
+  --head:'Bricolage Grotesque',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:1.05rem}
+h1,h2,h3{font-family:var(--head);line-height:1.05;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(246,245,251,.8);backdrop-filter:blur(12px)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.3rem;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo i{width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--violet),var(--mint),var(--sun),var(--violet))}
+nav ul{display:flex;gap:2rem;list-style:none;align-items:center}
+nav a{text-decoration:none;font-weight:500}
+nav a:hover{color:var(--violet)}
+.btn{display:inline-block;background:var(--ink);color:#fff!important;padding:.85rem 1.6rem;border-radius:999px;font-weight:500;border:0;cursor:pointer;font:inherit;transition:transform .2s,background .2s}
+.btn:hover{background:var(--violet);transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--ink)!important;box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.alt:hover{background:var(--ink);color:#fff!important}
+#menu{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--ink);color:#fff}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;padding-top:6rem;padding-bottom:4rem}
+.hero h1{font-size:clamp(2.8rem,8.5vw,7rem);font-weight:800;max-width:11ch}
+.hero h1 span{background:linear-gradient(90deg,var(--mint),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:46ch;margin:1.6rem 0 2.2rem;color:#c9ccea;font-size:1.2rem}
+.hero .btn{background:var(--mint);color:var(--ink)!important}
+.hero .btn:hover{background:#fff}
+.hero .btn.alt{background:transparent;color:#fff!important;box-shadow:inset 0 0 0 2px #fff;margin-left:.6rem}
+.hero .btn.alt:hover{background:#fff;color:var(--ink)!important}
+.ticker{position:absolute;bottom:0;left:0;right:0;overflow:hidden;border-top:1px solid #ffffff22;padding:.9rem 0;white-space:nowrap;color:#9aa0cf;font-family:var(--head);font-weight:500}
+.ticker div{display:inline-block;animation:slide 30s linear infinite}
+.ticker span{margin:0 1.6rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:6.5rem 0}
+h2{font-size:clamp(2rem,5vw,3.6rem);max-width:16ch;margin-bottom:3rem}
+
+/* services */
+.services{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem}
+.svc{padding:2.2rem;border-radius:28px;transition:transform .25s}
+.svc:hover{transform:rotate(-.6deg) scale(1.01)}
+.svc h3{font-size:1.9rem;margin-bottom:.7rem}
+.svc.a{background:var(--violet);color:#fff;grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px}
+.svc.b{background:var(--mint)}
+.svc.c{background:var(--sun);border-radius:60px 28px 28px 28px}
+.svc p{max-width:40ch}
+
+/* work */
+.work{background:#fff}
+.projects{display:grid;gap:0}
+.proj{display:grid;grid-template-columns:1fr 2fr auto;gap:1.5rem;align-items:center;padding:1.8rem 0;border-top:2px solid var(--ink);text-decoration:none;transition:padding .25s,background .25s}
+.proj:last-child{border-bottom:2px solid var(--ink)}
+.proj:hover{padding-left:1.2rem;padding-right:1.2rem;background:var(--paper)}
+.proj h3{font-size:1.7rem}
+.proj p{color:var(--muted)}
+.tag{background:var(--ink);color:#fff;padding:.3rem .9rem;border-radius:999px;font-size:.85rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about p{color:var(--muted);margin-bottom:1rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fact{border-left:4px solid var(--violet);padding-left:1rem}
+.fact b{font-family:var(--head);font-size:2.6rem;display:block;line-height:1}
+.fact span{color:var(--muted)}
+
+/* contact */
+.contact{background:var(--ink);color:#fff}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact p{color:#c9ccea}
+form{display:grid;gap:1rem}
+label{font-size:.95rem;color:#c9ccea}
+input,textarea{width:100%;margin-top:.3rem;padding:.9rem 1rem;border-radius:14px;border:2px solid #ffffff33;background:#ffffff0d;color:#fff;font:inherit}
+input:focus,textarea:focus{border-color:var(--mint);outline:none}
+.err{color:#ff9aa8;font-size:.9rem;min-height:1.2em}
+form .btn{background:var(--mint);color:var(--ink)!important;justify-self:start}
+#ok{display:none;background:var(--mint);color:var(--ink);padding:1.4rem;border-radius:18px;font-weight:500}
+
+footer{padding:2rem 0;background:var(--ink);color:#8d92bd;border-top:1px solid #ffffff22;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* page-load reveal (hero only) */
+.hero h1,.hero p,.hero .cta{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero p{animation-delay:.15s}.hero .cta{animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
+
+@media(max-width:820px){
+  #menu{display:block}
+  nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--paper);padding:1.5rem;gap:1.2rem}
+  nav ul.open{display:flex}
+  .services,.about,.contact .grid{grid-template-columns:1fr}
+  .svc.a{min-height:260px}
+  .proj{grid-template-columns:1fr;gap:.5rem}
+  .hero .btn.alt{margin:.6rem 0 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top"><i></i>Meridian Labs</a>
+      <button id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul id="links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="btn" href="#contact">Start a project</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <h1>We build software that <span>moves</span> you.</h1>
+      <p>Meridian Labs designs and ships web apps, mobile products and data tools for growing companies.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Start a project</a>
+        <a class="btn alt" href="#work">See our work</a>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>What we do for you</h2>
+      <div class="services">
+        <article class="svc a">
+          <h3>Product engineering</h3>
+          <p>From first prototype to production. We build fast, reliable web and mobile apps your customers enjoy using.</p>
+        </article>
+        <article class="svc b">
+          <h3>Design and branding</h3>
+          <p>Interfaces and identities that look sharp and are easy to use.</p>
+        </article>
+        <article class="svc c">
+          <h3>Data and automation</h3>
+          <p>Dashboards, pipelines and AI tools that save your team hours every week.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="work">
+    <div class="wrap">
+      <h2>Recent projects</h2>
+      <div class="projects">
+        <a class="proj" href="#contact"><h3>Fleetly</h3><p>Live delivery tracking that cut late shipments by a third.</p><span class="tag">Logistics</span></a>
+        <a class="proj" href="#contact"><h3>Bloom Bank</h3><p>A mobile banking app with onboarding in under three minutes.</p><span class="tag">Fintech</span></a>
+        <a class="proj" href="#contact"><h3>Hearth</h3><p>A booking platform for 400 independent restaurants.</p><span class="tag">Hospitality</span></a>
+        <a class="proj" href="#contact"><h3>Clinic Pulse</h3><p>Patient scheduling and reminders that reduced no-shows.</p><span class="tag">Healthcare</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>A small team with big output</h2>
+        <p>Meridian Labs is a team of engineers, designers and strategists. We work in short cycles, show progress every week, and stay with you after launch.</p>
+        <p>You talk directly to the people building your product, with no layers in between.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b data-n="120">0</b><span>Products launched</span></div>
+        <div class="fact"><b data-n="9">0</b><span>Years in business</span></div>
+        <div class="fact"><b data-n="35">0</b><span>Team members</span></div>
+        <div class="fact"><b data-n="98">0</b><span>% clients who return</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap grid">
+      <div>
+        <h2>Tell us what you're building</h2>
+        <p>Share a few details and we'll reply within one business day.</p>
+        <p style="margin-top:1.5rem">hello@meridianlabs.example</p>
+      </div>
+      <div>
+        <form id="form" novalidate>
+          <div><label for="name">Your name</label><input id="name" required><div class="err" data-for="name"></div></div>
+          <div><label for="email">Email</label><input id="email" type="email" required><div class="err" data-for="email"></div></div>
+          <div><label for="msg">Project details</label><textarea id="msg" rows="4" required></textarea><div class="err" data-for="msg"></div></div>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+        <div id="ok" role="status">Message sent. We'll reply within one business day.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Meridian Labs. All rights reserved.</span><span>Built with care.</span></div></footer>
+
+<script>
+// footer year + ticker
+document.getElementById('yr').textContent = new Date().getFullYear();
+const words = ['Web apps','Mobile apps','UI design','Data tools','AI automation','Cloud'];
+document.getElementById('tick').innerHTML = (words.map(w=>`<span>${w}</span>`).join('')).repeat(6);
+
+// mobile menu
+const menu = document.getElementById('menu'), links = document.getElementById('links');
+menu.onclick = () => { const o = links.classList.toggle('open'); menu.setAttribute('aria-expanded', o); };
+links.querySelectorAll('a').forEach(a => a.onclick = () => links.classList.remove('open'));
+
+// hero: interactive particle network that reacts to the cursor
+const cv = document.getElementById('net'), cx = cv.getContext('2d');
+let W, H, pts = [], mouse = {x:-999,y:-999};
+const colors = ['#19e3b1','#ffc857','#5b4bff'];
+function size(){
+  W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight;
+  pts = Array.from({length: Math.min(90, Math.floor(W/14))}, () => ({
+    x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.5, vy:(Math.random()-.5)*.5,
+    c:colors[Math.floor(Math.random()*3)]
+  }));
+}
+addEventListener('resize', size); size();
+cv.parentElement.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+cv.parentElement.addEventListener('pointerleave', () => mouse = {x:-999,y:-999});
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function draw(){
+  cx.clearRect(0,0,W,H);
+  for (const p of pts){
+    p.x += p.vx; p.y += p.vy;
+    if (p.x<0||p.x>W) p.vx*=-1; if (p.y<0||p.y>H) p.vy*=-1;
+    const dx = p.x-mouse.x, dy = p.y-mouse.y, d = Math.hypot(dx,dy);
+    if (d<140){ p.x += dx/d*2; p.y += dy/d*2; }
+    cx.fillStyle = p.c; cx.beginPath(); cx.arc(p.x,p.y,2.5,0,7); cx.fill();
+  }
+  for (let i=0;i<pts.length;i++) for (let j=i+1;j<pts.length;j++){
+    const d = Math.hypot(pts[i].x-pts[j].x, pts[i].y-pts[j].y);
+    if (d<120){ cx.strokeStyle = `rgba(150,160,255,${.35*(1-d/120)})`; cx.beginPath(); cx.moveTo(pts[i].x,pts[i].y); cx.lineTo(pts[j].x,pts[j].y); cx.stroke(); }
+  }
+  if (!still) requestAnimationFrame(draw);
+}
+draw();
+
+// count-up stats
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; io.unobserve(e.target);
+  const el = e.target, n = +el.dataset.n; let v = 0;
+  const t = setInterval(() => { v += Math.ceil(n/40); if (v>=n){ v=n; clearInterval(t);} el.textContent = v; }, 30);
+}), {threshold:.6});
+document.querySelectorAll('[data-n]').forEach(el => io.observe(el));
+
+// contact form validation
+const form = document.getElementById('form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const rules = {
+    name:  v => v.trim() ? '' : 'Enter your name.',
+    email: v => /^\S+@\S+\.\S+$/.test(v) ? '' : 'Enter a valid email address.',
+    msg:   v => v.trim().length >= 10 ? '' : 'Add at least 10 characters about your project.'
+  };
+  let ok = true;
+  for (const id in rules){
+    const msg = rules[id](document.getElementById(id).value);
+    form.querySelector(`[data-for="${id}"]`).textContent = msg;
+    if (msg) ok = false;
+  }
+  if (ok){ form.style.display = 'none'; document.getElementById('ok').style.display = 'block'; }
+});
+</script>
+</body>
+</html>
